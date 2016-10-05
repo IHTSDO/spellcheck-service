@@ -1,0 +1,26 @@
+package org.ihtsdo.otf.spellcheck;
+
+import org.ihtsdo.otf.spellcheck.service.SpellcheckService;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import java.io.IOException;
+
+@SpringBootApplication
+public class App {
+
+	@Value("${dictionariesDirectory}")
+	private String dictionariesDirectory;
+
+	@Bean
+	public SpellcheckService getSpellcheckService() throws IOException {
+		return new SpellcheckService(dictionariesDirectory);
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(App.class, args);
+	}
+
+}
