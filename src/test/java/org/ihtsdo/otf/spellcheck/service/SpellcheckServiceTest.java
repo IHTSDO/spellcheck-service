@@ -26,10 +26,10 @@ public class SpellcheckServiceTest {
 		final Map<String, List<String>> suggestions = spellcheckService.checkWordsReturnErrorSuggestions(Arrays.asList("app", "carot", "bean", "banana"));
 		assertNotNull(suggestions);
 
-		suggestions.keySet().forEach(key -> {
+		for (String key :suggestions.keySet()) {
 			System.out.println(key);
 			System.out.println(suggestions.get(key));
-		});
+		}
 
 		assertEquals(3, suggestions.size());
 
