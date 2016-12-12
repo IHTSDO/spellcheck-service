@@ -29,3 +29,5 @@ Response:
 	]
 }
 ```
+## Limitation
+The service is not able to process words shorter than three characters in length. Any words shorter than three characters will simply be ignored.
