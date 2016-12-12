@@ -1,5 +1,7 @@
 package org.ihtsdo.otf.spellcheck.service;
 
+import org.apache.lucene.analysis.core.StopAnalyzer;
+import org.apache.lucene.analysis.util.CharArraySet;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +26,8 @@ public class SpellcheckServiceTest {
 
 	@Test
 	public void testCheckWordsReturnErrorSuggestions() throws Exception {
-		final Map<String, List<String>> suggestions = spellcheckService.checkWordsReturnErrorSuggestions(Arrays.asList("app", "carot", "bean", "banana"));
+		final Map<String, List<String>> suggestions = spellcheckService.checkWordsReturnErrorSuggestions(
+				Arrays.asList("app", "carot", "bean", "banana"));
 		assertNotNull(suggestions);
 
 		for (String key :suggestions.keySet()) {
@@ -42,5 +46,23 @@ public class SpellcheckServiceTest {
 		assertEquals("No suggestions for word not in dictionary", 0, suggestions.get("bean").size());
 
 		assertNull("No suggestions for correctly spelled word.", suggestions.get("banana"));
+	}
+
+	@Test
+	public void testEnglishStopWord() {
+		Map<String, List<String>> suggestions = checkWord("the");
+		assertNotNull(suggestions);
+		assertEquals(0, suggestions.size());
+	}
+
+	@Test
+	public void testIgnoreWordShorterThanMin() {
+		Map<String, List<String>> suggestions = checkWord("of");
+		assertNotNull(suggestions);
+		assertEquals(0, suggestions.size());
+	}
+
+	private Map<String, List<String>> checkWord(String word) {
+		return spellcheckService.checkWordsReturnErrorSuggestions(Collections.singleton(word));
 	}
 }
