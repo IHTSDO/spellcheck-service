@@ -7,7 +7,7 @@ A generic spell checking REST API service using Lucene. Plain text dictionaries 
 There is a tiny sample dictionary file in the dictionaries directory. You can replace this with your when you are ready. Dictionaries are read from here on startup of the application. 
 ```
 mvn clean package
-java -jar target/spellcheck-service*.jar --dictionariesDirectory=dictionaries
+java -jar rest-service/target/spellcheck-service*.jar --dictionariesDirectory=dictionaries
 ```
 
 ## REST API

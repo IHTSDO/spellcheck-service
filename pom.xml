@@ -4,11 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.ihtsdo.otf</groupId>
-	<artifactId>spellcheck-service</artifactId>
-	<version>1.1.0-SNAPSHOT</version>
+	<artifactId>spellcheck-service-parent</artifactId>
+    <version>1.1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-	<name>Spellcheck Service</name>
-	<description>A Lucene Based Spellcheck REST Service</description>
+    <name>Spell Check Service</name>
+	<description>A Lucene Based Spell Check Service</description>
 
 	<properties>
 		<packageName>${project.artifactId}</packageName>
@@ -26,11 +27,12 @@
 		<version>1.5.2.RELEASE</version>
 	</parent>
 
+	<modules>
+		<module>spellcheck-core</module>
+		<module>rest-service</module>
+	</modules>
+
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-core</artifactId>
@@ -46,65 +48,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
 	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<mainClass>org.ihtsdo.otf.spellcheck.App</mainClass>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
-	<profiles>
-		<profile>
-			<id>deb</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.vafer</groupId>
-						<artifactId>jdeb</artifactId>
-						<version>1.1.1</version>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>jdeb</goal>
-								</goals>
-								<configuration>
-									<deb>${project.build.directory}/${packageName}-${project.version}-all.deb</deb>
-									<controlDir>${basedir}/src/deb/control</controlDir>
-									<snapshotExpand>true</snapshotExpand>
-									<snapshotEnv>BUILD_NUMBER</snapshotEnv>
-									<verbose>true</verbose>
-									<classifier>all</classifier>
-									<signPackage>false</signPackage>
-									<dataSet>
-										<data>
-											<src>${project.build.directory}/${project.build.finalName}.jar</src>
-											<dst>app.jar</dst>
-											<type>file</type>
-											<mapper>
-												<type>perm</type>
-												<prefix>/opt/${packageName}/</prefix>
-											</mapper>
-										</data>
-										<data>
-											<src>${basedir}/src/deb/supervisor.conf</src>
-											<dst>/etc/supervisor/conf.d/${packageName}.conf</dst>
-											<type>file</type>
-										</data>
-									</dataSet>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 
 	<repositories>
 		<repository>

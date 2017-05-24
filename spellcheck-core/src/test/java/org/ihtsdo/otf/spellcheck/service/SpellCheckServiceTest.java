@@ -1,26 +1,25 @@
 package org.ihtsdo.otf.spellcheck.service;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
 public class SpellCheckServiceTest {
 
-	@Autowired
 	private SpellCheckService spellCheckService;
+
+	@Before
+	public void setup() throws IOException {
+		spellCheckService = new SpellCheckService();
+		spellCheckService.loadDirectoryOfDictionaries("src/test/resources/dictionaries");
+	}
 
 	@Test
 	public void testCheckWordsReturnErrorSuggestions() throws Exception {
