@@ -31,7 +31,7 @@ public class SpellCheckService {
 		spellChecker = new SpellChecker(new RAMDirectory());
 	}
 
-	private void loadDictionary(Reader reader) throws IOException {
+	public void loadDictionary(Reader reader) throws IOException {
 		spellChecker.indexDictionary(new PlainTextDictionary(reader), new IndexWriterConfig(new StandardAnalyzer()), true);
 	}
 
