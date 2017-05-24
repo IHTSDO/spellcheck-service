@@ -1,7 +1,7 @@
-# Spellcheck Service
+# Spell Check Service
 
 ## Introduction
-A generic spellchecking REST API service using Lucene. Plain text dictionaries are loaded at startup.
+A generic spell checking REST API service using Lucene. Plain text dictionaries are loaded at startup. Can also be used as a library.
 
 ## Setup
 There is a tiny sample dictionary file in the dictionaries directory. You can replace this with your when you are ready. Dictionaries are read from here on startup of the application. 

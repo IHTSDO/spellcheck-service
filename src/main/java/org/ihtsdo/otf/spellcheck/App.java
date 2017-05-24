@@ -1,6 +1,6 @@
 package org.ihtsdo.otf.spellcheck;
 
-import org.ihtsdo.otf.spellcheck.service.SpellcheckService;
+import org.ihtsdo.otf.spellcheck.service.SpellCheckService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,8 +15,10 @@ public class App {
 	private String dictionariesDirectory;
 
 	@Bean
-	public SpellcheckService getSpellcheckService() throws IOException {
-		return new SpellcheckService(dictionariesDirectory);
+	public SpellCheckService getSpellCheckService() throws IOException {
+		SpellCheckService spellCheckService = new SpellCheckService();
+		spellCheckService.loadDirectoryOfDictionaries(dictionariesDirectory);
+		return spellCheckService;
 	}
 
 	public static void main(String[] args) {

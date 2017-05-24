@@ -1,7 +1,6 @@
 package org.ihtsdo.otf.spellcheck.service;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.analysis.util.CharArraySet;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.search.spell.PlainTextDictionary;
 import org.apache.lucene.search.spell.SpellChecker;
@@ -12,9 +11,10 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.*;
 
-public class SpellcheckService {
+public class SpellCheckService {
 
 	private SpellChecker spellChecker;
 
@@ -23,8 +23,19 @@ public class SpellcheckService {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	public SpellcheckService(String dictionariesDirectoryPath) throws IOException {
+	public SpellCheckService() throws IOException {
+		clearIndex();
+	}
+
+	public void clearIndex() throws IOException {
 		spellChecker = new SpellChecker(new RAMDirectory());
+	}
+
+	private void loadDictionary(Reader reader) throws IOException {
+		spellChecker.indexDictionary(new PlainTextDictionary(reader), new IndexWriterConfig(new StandardAnalyzer()), true);
+	}
+
+	public void loadDirectoryOfDictionaries(String dictionariesDirectoryPath) throws IOException {
 		File dictionariesDir = new File(dictionariesDirectoryPath);
 		if (!dictionariesDir.isDirectory()) {
 			logger.error("Specified dictionaries directory is not a directory {}", dictionariesDir.getAbsolutePath());
@@ -37,7 +48,8 @@ public class SpellcheckService {
 			for (File file : files) {
 				if (file.isFile() && file.getName().endsWith(".txt")) {
 					logger.info("Loading dictionary {}.", file.getName());
-					spellChecker.indexDictionary(new PlainTextDictionary(new FileReader(file)), new IndexWriterConfig(new StandardAnalyzer()), true);
+					FileReader reader = new FileReader(file);
+					loadDictionary(reader);
 					dictionariesLoaded++;
 				}
 			}

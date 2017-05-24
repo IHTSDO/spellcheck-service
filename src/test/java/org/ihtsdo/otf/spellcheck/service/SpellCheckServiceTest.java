@@ -1,7 +1,5 @@
 package org.ihtsdo.otf.spellcheck.service;
 
-import org.apache.lucene.analysis.core.StopAnalyzer;
-import org.apache.lucene.analysis.util.CharArraySet;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +17,14 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpellcheckServiceTest {
+public class SpellCheckServiceTest {
 
 	@Autowired
-	private SpellcheckService spellcheckService;
+	private SpellCheckService spellCheckService;
 
 	@Test
 	public void testCheckWordsReturnErrorSuggestions() throws Exception {
-		final Map<String, List<String>> suggestions = spellcheckService.checkWordsReturnErrorSuggestions(
+		final Map<String, List<String>> suggestions = spellCheckService.checkWordsReturnErrorSuggestions(
 				Arrays.asList("app", "carot", "bean", "banana"));
 		assertNotNull(suggestions);
 
@@ -63,6 +61,6 @@ public class SpellcheckServiceTest {
 	}
 
 	private Map<String, List<String>> checkWord(String word) {
-		return spellcheckService.checkWordsReturnErrorSuggestions(Collections.singleton(word));
+		return spellCheckService.checkWordsReturnErrorSuggestions(Collections.singleton(word));
 	}
 }
