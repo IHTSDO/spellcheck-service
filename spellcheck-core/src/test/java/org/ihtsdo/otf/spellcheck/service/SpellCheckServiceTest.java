@@ -60,7 +60,19 @@ public class SpellCheckServiceTest {
 		assertEquals(0, checkWord("200.99").size());
 		assertEquals(0, checkWord("1,200.99").size());
 		assertEquals(0, checkWord("1,00,200.99").size());
-		assertEquals(1, checkWord("1,00,200.99a").size());
+		assertEquals(1, checkWord("1,00,aa200.99").size());
+	}
+
+	@Test
+	public void testNumbersStrippedFromMeasurements() {
+		// mLt is in the test dictionary
+		assertEquals(0, checkWord("200mLt").size());
+
+		// mLz is not in the test dictionary
+		assertEquals(1, checkWord("200mLz").size());
+
+		// mg too short to be checked
+		assertEquals(0, checkWord("200mg").size());
 	}
 
 	@Test
