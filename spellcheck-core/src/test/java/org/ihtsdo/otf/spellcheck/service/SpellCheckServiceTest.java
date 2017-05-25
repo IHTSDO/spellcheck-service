@@ -53,6 +53,17 @@ public class SpellCheckServiceTest {
 	}
 
 	@Test
+	public void testAllNumbersPass() {
+		assertEquals(0, checkWord("1").size());
+		assertEquals(0, checkWord("15").size());
+		assertEquals(0, checkWord("200").size());
+		assertEquals(0, checkWord("200.99").size());
+		assertEquals(0, checkWord("1,200.99").size());
+		assertEquals(0, checkWord("1,00,200.99").size());
+		assertEquals(1, checkWord("1,00,200.99a").size());
+	}
+
+	@Test
 	public void testIgnoreWordShorterThanMin() {
 		Map<String, List<String>> suggestions = checkWord("of");
 		assertNotNull(suggestions);

@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class SpellCheckService {
 
@@ -20,6 +21,7 @@ public class SpellCheckService {
 
 	private static final String CHECK_ERROR = "Problem checking and suggesting words with spell checker.";
 	private static final int MIN_WORD_LENGTH = 3; // The Lucene SpellChecker does not deal with words shorter than this
+	private static final Pattern LOOSE_NUMBER_PATTERN = Pattern.compile("^[\\d,.]+$");
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -66,7 +68,7 @@ public class SpellCheckService {
 		Map<String, List<String>> errorSuggestions = new HashMap<>();
 		try {
 			for (String word : words) {
-				if (word.length() >= MIN_WORD_LENGTH && !spellChecker.exist(word)) {
+				if (word.length() >= MIN_WORD_LENGTH && !LOOSE_NUMBER_PATTERN.matcher(word).matches() && !spellChecker.exist(word)) {
 					errorSuggestions.put(word, Arrays.asList(spellChecker.suggestSimilar(word, 5)));
 				}
 			}
