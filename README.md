@@ -20,11 +20,11 @@ GET http://localhost:8080/check?words=carot,thing,apple,banan
 Response:
 ```json
 {
-	carot: [
+	"carot": [
 		"carrot"
 	],
-	thing: [ ],
-	banan: [
+	"thing": [ ],
+	"banan": [
 		"banana"
 	]
 }
