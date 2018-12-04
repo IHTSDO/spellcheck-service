@@ -22,7 +22,7 @@ public class SpellCheckServiceTest {
 	}
 
 	@Test
-	public void testCheckWordsReturnErrorSuggestions() throws Exception {
+	public void testCheckWordsReturnErrorSuggestions() {
 		final Map<String, List<String>> suggestions = spellCheckService.checkWordsReturnErrorSuggestions(
 				Arrays.asList("app", "carot", "bean", "banana"));
 		assertNotNull(suggestions);
