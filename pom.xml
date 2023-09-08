@@ -5,7 +5,7 @@
 
 	<groupId>org.ihtsdo.otf</groupId>
 	<artifactId>spellcheck-service-parent</artifactId>
-    <version>2.0.0-SNAPSHOT</version>
+    <version>2.0.0</version>
 	<packaging>pom</packaging>
 
     <name>Spell Check Service</name>
@@ -18,7 +18,7 @@
     <parent>
         <groupId>org.snomed</groupId>
         <artifactId>snomed-parent-bom</artifactId>
-        <version>2.0.0-SNAPSHOT</version>
+        <version>2.0.0</version>
     </parent>
 
 	<modules>
@@ -26,29 +26,29 @@
 		<module>rest-service</module>
 	</modules>
 
-	<repositories>
-		<repository>
-			<id>spring-milestones</id>
-			<url>http://repo.spring.io/milestone</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-milestones</id>
-			<url>http://repo.spring.io/milestone</url>
-		</pluginRepository>
-	</pluginRepositories>
+    <repositories>
+        <repository>
+            <id>ihtsdo-releases</id>
+            <name>IHTSDO Public Nexus Releases</name>
+            <url>https://nexus3.ihtsdotools.org/repository/maven-releases/</url>
+        </repository>
+        <repository>
+            <id>ihtsdo-snapshots</id>
+            <name>IHTSDO Public Nexus Snapshots</name>
+            <url>https://nexus3.ihtsdotools.org/repository/maven-snapshots/</url>
+        </repository>
+    </repositories>
 
-	<distributionManagement>
-		<repository>
-			<id>ihtsdo-public-nexus</id>
-			<name>IHTSDO Public Nexus Releases</name>
-			<url>https://maven.ihtsdotools.org/content/repositories/releases/</url>
-		</repository>
-		<snapshotRepository>
-			<id>ihtsdo-public-nexus</id>
-			<name>IHTSDO Public Nexus Snapshots</name>
-			<url>https://maven.ihtsdotools.org/content/repositories/snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
+    <distributionManagement>
+        <repository>
+            <id>ihtsdo-public-nexus</id>
+            <name>IHTSDO Public Nexus Releases</name>
+            <url>https://nexus3.ihtsdotools.org/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>ihtsdo-public-nexus</id>
+            <name>IHTSDO Public Nexus Snapshots</name>
+            <url>https://nexus3.ihtsdotools.org/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
