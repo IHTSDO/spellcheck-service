@@ -4,7 +4,7 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.search.spell.PlainTextDictionary;
 import org.apache.lucene.search.spell.SpellChecker;
-import org.apache.lucene.store.RAMDirectory;
+import org.apache.lucene.store.ByteBuffersDirectory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,7 +32,7 @@ public class SpellCheckService {
 	}
 
 	public void clearIndex() throws IOException {
-		spellChecker = new SpellChecker(new RAMDirectory());
+		spellChecker = new SpellChecker(new ByteBuffersDirectory());
 	}
 
 	public void loadDictionary(Reader reader) throws IOException {
