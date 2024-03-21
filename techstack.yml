@@ -1,0 +1,144 @@
+repo_name: IHTSDO/spellcheck-service
+report_id: ff0a3a1f93e00a96cef3d5297eb63a59
+version: 0.1
+repo_type: Public
+timestamp: '2024-03-21T12:57:07+00:00'
+requested_by: dmcgihtsdo
+provider: github
+branch: master
+detected_tools_count: 11
+tools:
+- name: Java
+  description: A concurrent, class-based, object-oriented, language specifically designed
+    to have as few implementation dependencies as possible
+  website_url: https://www.java.com
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/995/K85ZWV2F.png
+  detection_source_url: https://github.com/IHTSDO/spellcheck-service
+  detection_source: Repo Metadata
+- name: Spring Framework
+  description: An application framework and inversion of control container for the
+    Java platform
+  website_url: https://spring.io/projects/spring-framework
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/2006/spring-framework-project-logo.png
+  detection_source_url: https://github.com/IHTSDO/spellcheck-service/blob/master/spellcheck-core/pom.xml
+  detection_source: spellcheck-core/pom.xml
+  last_updated_by: Jim Cornmell
+  last_updated_on: 2023-09-04 13:06:18.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/IHTSDO/spellcheck-service
+  detection_source: Repo Metadata
+- name: JUnit
+  description: A programmer-oriented testing framework for Java
+  website_url: http://junit.org/
+  license: EPL-1.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Testing Frameworks
+  image_url: https://img.stackshare.io/service/2020/874086.png
+  detection_source_url: https://github.com/IHTSDO/spellcheck-service/blob/master/spellcheck-core/pom.xml
+  detection_source: spellcheck-core/pom.xml
+  last_updated_by: Kai Kewley
+  last_updated_on: 2017-05-24 23:08:22.000000000 Z
+- name: Apache Camel
+  description: A versatile open source integration framework
+  website_url: https://camel.apache.org/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Application Hosting
+  sub_category: Platform as a Service
+  image_url: https://img.stackshare.io/service/3276/xWt1RFo6_400x400.jpg
+  detection_source_url: https://github.com/IHTSDO/spellcheck-service/blob/master/rest-service/src/main/resources/application.properties
+  detection_source: rest-service/src/main/resources/application.properties
+  last_updated_by: Kai Kewley
+  last_updated_on: 2016-12-07 10:49:58.000000000 Z
+- name: Shell
+  description: A shell is a text-based terminal, used for manipulating programs and
+    files. Shell scripts typically manage program execution.
+  website_url: https://en.wikipedia.org/wiki/Shell_script
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/IHTSDO/spellcheck-service
+  detection_source: Repo Metadata
+- name: junit:junit
+  description: JUnit is a unit testing framework for Java
+  license: EPL-1.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/IHTSDO/spellcheck-service/blob/master/spellcheck-core/pom.xml
+  detection_source: spellcheck-core/pom.xml
+  last_updated_by: Jim Cornmell
+  last_updated_on: 2023-09-04 13:06:18.000000000 Z
+- name: org.apache.lucene:lucene-core
+  description: Apache Lucene Java Core
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/IHTSDO/spellcheck-service/blob/master/spellcheck-core/pom.xml
+  detection_source: spellcheck-core/pom.xml
+  last_updated_by: Jim Cornmell
+  last_updated_on: 2023-09-04 13:06:18.000000000 Z
+- name: org.apache.lucene:lucene-suggest
+  description: Lucene Suggest Module
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/IHTSDO/spellcheck-service/blob/master/spellcheck-core/pom.xml
+  detection_source: spellcheck-core/pom.xml
+  last_updated_by: Jim Cornmell
+  last_updated_on: 2023-09-04 13:06:18.000000000 Z
+- name: org.springframework.boot:spring-boot-starter-test
+  description: Starter for testing Spring Boot applications with libraries including
+    JUnit
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/IHTSDO/spellcheck-service/blob/master/spellcheck-core/pom.xml
+  detection_source: spellcheck-core/pom.xml
+  last_updated_by: Jim Cornmell
+  last_updated_on: 2023-09-04 13:06:18.000000000 Z
+- name: org.springframework.boot:spring-boot-starter-web
+  description: Starter for building web, including RESTful, applications using Spring
+    MVC
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/IHTSDO/spellcheck-service/blob/master/rest-service/pom.xml
+  detection_source: rest-service/pom.xml
+  last_updated_by: Kai Kewley
+  last_updated_on: 2017-05-24 23:08:22.000000000 Z
