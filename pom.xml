@@ -12,6 +12,7 @@
 	<description>A Lucene Based Spell Check Service</description>
 
 	<properties>
+        <java.version>25</java.version>
 		<packageName>${project.artifactId}</packageName>
 	</properties>
 
