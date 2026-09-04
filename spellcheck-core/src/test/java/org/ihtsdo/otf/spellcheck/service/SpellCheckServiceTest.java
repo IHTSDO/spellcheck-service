@@ -11,18 +11,18 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SpellCheckServiceTest {
+class SpellCheckServiceTest {
 
 	private SpellCheckService spellCheckService;
 
 	@BeforeEach
-	public void setup() throws IOException {
+	void setup() throws IOException {
 		spellCheckService = new SpellCheckService();
 		spellCheckService.loadDirectoryOfDictionaries("src/test/resources/dictionaries");
 	}
 
 	@Test
-	public void testCheckWordsReturnErrorSuggestions() {
+	void testCheckWordsReturnErrorSuggestions() {
 		final Map<String, List<String>> suggestions = spellCheckService.checkWordsReturnErrorSuggestions(
 				Arrays.asList("app", "carot", "bean", "banana"));
 		assertNotNull(suggestions);
@@ -46,14 +46,14 @@ public class SpellCheckServiceTest {
 	}
 
 	@Test
-	public void testEnglishStopWord() {
+	void testEnglishStopWord() {
 		Map<String, List<String>> suggestions = checkWord("the");
 		assertNotNull(suggestions);
 		assertEquals(0, suggestions.size());
 	}
 
 	@Test
-	public void testAllNumbersPass() {
+	void testAllNumbersPass() {
 		assertEquals(0, checkWord("1").size());
 		assertEquals(0, checkWord("15").size());
 		assertEquals(0, checkWord("200").size());
@@ -64,7 +64,7 @@ public class SpellCheckServiceTest {
 	}
 
 	@Test
-	public void testNumbersStrippedFromMeasurements() {
+	void testNumbersStrippedFromMeasurements() {
 		// mLt is in the test dictionary
 		assertEquals(0, checkWord("200mLt").size());
 
@@ -76,7 +76,7 @@ public class SpellCheckServiceTest {
 	}
 
 	@Test
-	public void testIgnoreWordShorterThanMin() {
+	void testIgnoreWordShorterThanMin() {
 		Map<String, List<String>> suggestions = checkWord("of");
 		assertNotNull(suggestions);
 		assertEquals(0, suggestions.size());
