@@ -1,7 +1,7 @@
 package org.ihtsdo.otf.spellcheck.service;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -9,13 +9,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SpellCheckServiceTest {
 
 	private SpellCheckService spellCheckService;
 
-	@Before
+	@BeforeEach
 	public void setup() throws IOException {
 		spellCheckService = new SpellCheckService();
 		spellCheckService.loadDirectoryOfDictionaries("src/test/resources/dictionaries");
@@ -35,14 +35,14 @@ public class SpellCheckServiceTest {
 		assertEquals(3, suggestions.size());
 
 		assertEquals(1, suggestions.get("app").size());
-		assertEquals("Correct word suggested", "apple", suggestions.get("app").get(0));
+		assertEquals("apple", suggestions.get("app").get(0), "Correct word suggested");
 
 		assertEquals(1, suggestions.get("carot").size());
-		assertEquals("Correct word suggested", "carrot", suggestions.get("carot").get(0));
+		assertEquals("carrot", suggestions.get("carot").get(0), "Correct word suggested");
 
-		assertEquals("No suggestions for word not in dictionary", 0, suggestions.get("bean").size());
+		assertEquals(0, suggestions.get("bean").size(), "No suggestions for word not in dictionary");
 
-		assertNull("No suggestions for correctly spelled word.", suggestions.get("banana"));
+		assertNull(suggestions.get("banana"), "No suggestions for correctly spelled word.");
 	}
 
 	@Test
